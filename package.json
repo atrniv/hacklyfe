@@ -1,0 +1,30 @@
+{
+  "name": "hacklyfe",
+  "version": "1.0.0",
+  "description": "simple hackerrank clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atrniv/hacklyfe.git"
+  },
+  "author": "Johny Jose <johny@playlyfe.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atrniv/hacklyfe/issues"
+  },
+  "homepage": "https://github.com/atrniv/hacklyfe#readme",
+  "dependencies": {
+    "body-parser": "1.0.2",
+    "connect-redis": "2.0.0",
+    "cookie-parser": "^1.3.5",
+    "express": "4.10.4",
+    "express-session": "1.0.3",
+    "morgan": "1.5.3",
+    "playlyfe": "0.4.1",
+    "poseidon-mongo": "0.3.2"
+  }
+}
