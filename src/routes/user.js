@@ -3,7 +3,31 @@ module.exports = function (router) {
   // Get Competition Leaderboard
   router.get('/competitions/:competition_id', function (req, res) {
     // Fetch leaderboard from playlyfe
-    req.pl.get('')
+    req.db.collection('competitions').then(function (collection) {
+      collection.findOne({ active: true }).then(function (competition) {
+        if (competition == null) {
+          return res.status(404).json({
+            error: "competition_not_found",
+            error_description: "Competition does not exist"
+          });
+        } else {
+          req.pl.get('/runtime/leaderboards/l33t_hackers', {
+            player_id: req.session.user.id,
+            cycle: 'alltime',
+            skip: 0,
+            limit: 10,
+            scope_id: competition._id.toString()
+          }).then(function (leaderboard) {
+            res.json(leaderboard);
+          }).catch(function (err) {
+            res.status(err.status).json({
+              error: err.name,
+              error_description: err.message
+            });
+          });
+        }
+      });
+    });
   });
 
   // Query Past Competitions
