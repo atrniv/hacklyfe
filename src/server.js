@@ -4,14 +4,19 @@ var session = require('express-session');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
+var Mongo = require('poseidon-mongo');
+Mongo.Driver.configure('hacklyfe', { database: 'hacklyfe' });
+
+var db = new Mongo.Database('hacklyfe');
+
 var Playlyfe = require('playlyfe').Playlyfe;
 var PlaylyfeException = require('playlyfe').PlaylyfeException;
 
 var pl = new Playlyfe({
     type: 'client',
     version: 'v2',
-    client_id: "",
-    client_secret: ""
+    client_id: "YjgyMWQyNTQtNWVhYS00ZjZhLWFhYzAtNTg1YzJkZDNmYmZh",
+    client_secret: "ZmEyZDUxMTctNGMxMC00ODk5LWI0ZjctOTcyNjdmMjdlZjMyZDI5NTI5NzAtMTA3Zi0xMWU1LTg0NWEtY2Q3NTY1N2UyMDg1"
 });
 
 var app = express();
@@ -28,6 +33,7 @@ app.use(session({
 // attach playlyfe client to request
 app.use(function (req, res, next) {
   req.pl = pl;
+  req.db = db;
   next();
 });
 
