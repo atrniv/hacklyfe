@@ -1,0 +1,247 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  line-height: 1.62;
+}
+
+body,
+textarea,
+input[type='text'],
+input[type='password'],
+.button {
+  font-family: "Inconsolata", Consolas, monospace;
+  font-size: 16px;
+}
+
+.main-nav {
+  font-weight: bold;
+  height: 50px;
+  font-size: 20px;
+}
+.inner-nav {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.inner-nav > * {
+  line-height: 50px;
+}
+.inner-nav a {
+  color: #00A651;
+  text-decoration: underline dotted;
+}
+.logo {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0px 10px;
+}
+.profile-links {
+  float: right;
+  margin: 0;
+}
+.profile-links .link-item {
+  list-style: none;
+  float: left;
+  padding: 0 10px;
+}
+.profile-links .avatar {
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  background-color: #000000;
+}
+
+.page-wrapper {
+  padding: 3rem;
+  min-height: calc(100% - 50px);
+}
+
+.login-form {
+  width: 400px;
+  margin: 0 auto;
+}
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#profile-zone .main-nav,
+#login-zone .main-nav {
+  background-color: #001D0E;
+  color: #00A651;
+}
+#profile-zone .page-wrapper,
+#login-zone .main-nav {
+  background-color: #000000;
+  color: #00A651;
+}
+#profile-zone input[type='text'],
+#profile-zone input[type='password'],
+#profile-zone textarea,
+#profile-zone .button {
+  background-color: #02160C;
+  border: 1px solid #0E4A2C;
+  color: #D0E0D8;
+}
+
+#admin-zone .main-nav {
+  background-color: #00121C;
+  color: #1A5B7F;
+}
+#admin-zone .page-wrapper {
+  background-color: #000000;
+  color: #1A5B7F;
+}
+#admin-zone input[type='text'],
+#admin-zone input[type='password'],
+#admin-zone textarea,
+#admin-zone .button {
+  background-color: #00121C;
+  border: 1px solid #003754;
+  color: #1A5B7F;
+}
+
+.button {
+  line-height: 33px;
+  height: 37px;
+  padding: 0 20px;
+  cursor: pointer;
+}
+.button.hollow {
+  background-color: transparent;
+}
+
+.fl-left {
+  float: left !important;
+}
+.fl-right {
+  float: right !important;
+}
+
+input[type='text'],
+input[type='password'] {
+  line-height: 33px;
+  height: 37px;
+  padding: 0 5px;
+}
+
+.page-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+#problem-area {
+  float: left;
+  width: calc(100% - 300px);
+  padding: 10px;
+}
+.problem-header {
+  font-size: 1.2em;
+}
+.problem-header .timer {
+  color: red;
+  float: right;
+}
+.problem-details {
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+.problem-details .title {
+  font-weight: bold;
+}
+.problem-details .description {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.problem-input {
+  margin-bottom: 1em;
+}
+.problem-input textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  padding: 5px;
+}
+
+.leaderboard-wrapper {
+  width: 300px;
+  padding: 10px;
+  overflow: auto;
+}
+.leaderboard-header {
+  color: #2689BF;
+  font-size: 1.2em;
+}
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.leaderboard-item {
+  background-color: #00121C;
+  border: 1px solid #003754;
+  color: #1A5B7F;
+  padding: 10px;
+  overflow: auto;
+  margin: 1em 0;
+}
+.leaderboard-item.top {
+  background-color: #00293F;
+  border-color: #005B8C;
+  color: #2689BF;
+}
+.leaderboard-item.self {
+  background-color: #00293F;
+  border-color: #005B8C;
+  color: #33B6FE;
+}
+.leaderboard-item .avatar {
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+.leaderboard-item .name {
+  float: left;
+  width: calc(100% - 120px);
+  padding-left: 10px;
+  line-height: 40px;
+  white-space: nowrap;
+  word-wrap: ellipsis;
+  overflow: hidden;
+}
+.leaderboard-item .score {
+  float: right;
+  text-align: right;
+  width: 80px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+
+#admin-zone .leaderboard-area {
+  overflow: hidden;
+}
+#admin-zone .leaderboard-wrapper {
+  float: left;
+}
+#admin-zone .contest-area {
+  padding: 10px;
+}
+#admin-zone .contest-area input {
+  width: 400px;
+  font-style: italic;
+}

@@ -36,7 +36,7 @@ module.exports = function (router) {
       collection.find({}, { sort: { _id: -1 } }).toArray().then(function (data) {
         res.json(data);
       });
-    })
+    });
   });
 
   // Query Questions
@@ -62,14 +62,27 @@ module.exports = function (router) {
 
   // Register User
   router.post('/register', function (req, res) {
-    req.pl.post('/admin/players', {}, req.body).then(function (player) {
-      req.session.user = player;
-      res.json(player);
+    username = req.body.username;
+    password = req.body.password;
+    player = {alias: username, id: username};
+
+    if (username == 'admin') {
+      if (password == 'PlayLyfe') {
+        req.session.user = player;
+        return res.json(player);
+      } else {
+        return res.status(403).json({error: 'Access denied'});
+      }
+    }
+
+    req.pl.post('/admin/players', {}, player).then(function (player_data) {
+      req.session.user = player_data;
+      res.json(player_data);
     }).catch(function (err) {
       if (err.status === 409) {
-        req.pl.get('/runtime/player', { player_id: req.body.id }).then(function (player) {
-          req.session.user = player;
-          res.json(player);
+        req.pl.get('/runtime/player', { player_id: player.id }).then(function (player_data) {
+          req.session.user = player_data;
+          res.json(player_data);
         });
       } else {
         res.status(err.status).json({

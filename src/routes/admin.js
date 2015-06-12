@@ -4,7 +4,7 @@ module.exports = function (router) {
     req.db.collection('competitions').then(function (collection) {
       // Check if there is an active competition
       collection.findOne({ active: true }).then(function (doc) {
-        if (doc != null) {
+        if (doc !== null) {
           res.status(400).json({
             error: 'competition_running',
             error_description: 'There is a competition already running'
@@ -23,7 +23,7 @@ module.exports = function (router) {
   router.post('/stop', function (req, res) {
     req.db.collection('competitions').then(function (collection) {
       collection.findOne({ active: true }).then(function (doc) {
-        if (doc != null) {
+        if (doc !== null) {
           doc.active = false;
           collection.save(doc).then(function () {
             res.json(doc);
@@ -35,6 +35,6 @@ module.exports = function (router) {
           });
         }
       });
-    })
+    });
   });
-}
+};

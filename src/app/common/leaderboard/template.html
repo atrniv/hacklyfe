@@ -1,0 +1,10 @@
+<div class="leaderboard-wrapper">
+  <header class="leaderboard-header">Top Hackers</header>
+  <ul class="leaderboard-list" data-ng-repeat="player in state.leaderboard">
+    <li class="leaderboard-item top">
+      <div class="avatar"></div>
+      <div class="name">{{player.alias}}</div>
+      <div class="score">{{player.score}}</div>
+    </li>
+  </ul>
+</div>

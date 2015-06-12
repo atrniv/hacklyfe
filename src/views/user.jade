@@ -1,0 +1,28 @@
+doctype html(lang='en')
+head
+  meta(charset='UTF-8')
+  title Hacklyfe
+  link(rel='stylesheet', href='main.css')
+  link(rel='stylesheet', href='components/codemirror/lib/codemirror.css')
+  base(href='/')
+
+  body#profile-zone(ng-app='hacklyfe.user', ng-controller='UserCtrl')
+    nav.main-nav
+      .inner-nav
+        .logo hacklyfe_
+        ul.profile-links
+          li.link-item
+            a(href='#') Monku
+          li.link-item.avatar
+
+    .page-wrapper
+      .page-content
+        hacklyfe-question-panel
+        hacklyfe-leaderboard(competition='id')
+        .footer Created with &lt;3 by Playlyfe
+
+    script(type="text/javascript").
+      window.competition = competition
+
+    script(src='lib/common.js')
+    script(src='lib/user.js')

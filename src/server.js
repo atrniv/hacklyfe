@@ -37,6 +37,9 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.set('views', './views');
+app.set('view engine', 'jade');
+
 var admin_router = express.Router();
 var user_router = express.Router();
 
@@ -49,4 +52,28 @@ app.use('/user', user_router);
 app.use('/', express.static( __dirname + "/public"));
 
 
-app.listen(3000)
+getActiveCompetition = function (req) {
+  req.db.collection('competitions').then(function (collection) {
+    return collection.findOne({ active: true });
+  });
+};
+
+app.get('/', function (req, res) {
+  // register
+  if(!req.session.user) {
+    res.render('register');
+  } else if(req.session.user.alias === 'admin') {
+    res.render('admin');
+  } else {
+    getActiveCompetition(req).then(function (doc) {
+      if(doc !== null) {
+        doc.questions = require('question.json');
+        res.render('user', {competition: doc});
+      } else {
+        res.render('no_competition');
+      }
+    });
+  }
+});
+
+app.listen(3000);
